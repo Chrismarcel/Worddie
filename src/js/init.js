@@ -14,7 +14,7 @@ class Worddie {
         this.renderDefinitions(definition);
       })
       .catch(error => {
-        console.log("Sorry, could not connect to Server");
+        console.log("Sorry, could not connect to Server", error);
       });
   }
 
@@ -24,19 +24,21 @@ class Worddie {
     Worddie.appendContent("#word", Worddie.capitalizeWord(word));
     Worddie.appendContent("#phonetics", `/${phonetic[0]}/`);
     Object.keys(meaning).map(definitions => {
-      meaning[definitions].map((definitionItem, index) => {
+      meaning[definitions].map(definitionItem => {
+        definitionIndex += 1;
+        console.log(definitionIndex);
         const { definition } = definitionItem;
         Worddie.createDefinitionNode(definitionItem);
         Worddie.appendContent(
-          `.word__definition:nth-of-type(${index + 1}) .list-index`,
-          `${++definitionIndex}.`
+          `.word__definition:nth-of-type(${definitionIndex}) .list-index`,
+          `${definitionIndex}.`
         );
         Worddie.appendContent(
-          `.word__definition:nth-of-type(${index + 1}) .part-of-speech`,
+          `.word__definition:nth-of-type(${definitionIndex}) .part-of-speech`,
           Worddie.capitalizeWord(definitions)
         );
         Worddie.appendContent(
-          `.word__definition:nth-of-type(${index + 1}) .definition`,
+          `.word__definition:nth-of-type(${definitionIndex}) .definition`,
           Worddie.capitalizeWord(definition)
         );
       });
@@ -49,6 +51,7 @@ class Worddie {
 
   static appendContent(selector, content) {
     document.querySelector(selector).textContent = content;
+    console.log(selector, content, document.querySelector(selector));
     return;
   }
 

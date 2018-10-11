@@ -1,3 +1,3 @@
-const worddie = new Worddie("Ability");
+const worddie = new Worddie("Effect");
 
 worddie.getDefinition();
