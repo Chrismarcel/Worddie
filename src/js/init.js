@@ -11,14 +11,33 @@ class Worddie {
     fetch(api)
       .then(response => response.json())
       .then(definition => {
-        this.renderDefinitions(definition);
+        Worddie.renderDefinitions(definition);
       })
       .catch(error => {
         console.log("Sorry, could not connect to Server", error);
       });
   }
 
-  renderDefinitions(worddieObject) {
+  pronounceWord() {
+    const synth = window.speechSynthesis;
+    const voices = synth.getVoices();
+    const speech = new SpeechSynthesisUtterance(this.word);
+
+    if (voices.length > 0) {
+      const defaultVoice = voices.filter(
+        voice => voice.name === "Google UK English Female"
+      );
+      speech.voice = defaultVoice[0];
+      speech.volume = 1;
+      return synth.speak(speech);
+    }
+
+    return voices;
+  }
+
+  deleteWord() {}
+
+  static renderDefinitions(worddieObject) {
     let definitionIndex = 0;
     const { word, phonetic, meaning } = worddieObject;
     Worddie.appendContent("#word", Worddie.capitalizeWord(word));
@@ -26,7 +45,6 @@ class Worddie {
     Object.keys(meaning).map(definitions => {
       meaning[definitions].map(definitionItem => {
         definitionIndex += 1;
-        console.log(definitionIndex);
         const { definition } = definitionItem;
         Worddie.createDefinitionNode(definitionItem);
         Worddie.appendContent(
@@ -51,7 +69,6 @@ class Worddie {
 
   static appendContent(selector, content) {
     document.querySelector(selector).textContent = content;
-    console.log(selector, content, document.querySelector(selector));
     return;
   }
 
@@ -115,8 +132,7 @@ class Worddie {
       listElements.classList.add("definition-list");
       listElements.textContent = Worddie.capitalizeWord(wordsList);
     }
+
     return { titleEl, listElements };
   }
-
-  deleteWord() {}
 }
