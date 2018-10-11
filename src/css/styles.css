@@ -130,11 +130,11 @@ body {
 }
 
 .definition {
-  margin: 10px 0;
+  margin: 10px 0 0;
 }
 
 .title {
-  margin-bottom: 10px;
+  margin: 10px 0;
   position: relative;
 }
 
@@ -145,6 +145,15 @@ body {
   top: -2px;
 }
 
-.word-list {
+.definition-list {
   font-style: italic;
+  display: inline-block;
+}
+
+.definition-list:not(:last-child) {
+  margin-right: 3px;
+}
+
+.definition-list:not(:last-child)::after {
+  content: ", ";
 }

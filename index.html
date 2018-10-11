@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="./dist/css/normalize.min.css">
     <link rel="stylesheet" href="./dist/css/styles.min.css">
     <title>Worddie</title>
 </head>
@@ -185,7 +184,7 @@
                 </button>
             </header>
             <div class="word__search__details">
-                <h3>Aerial</h3>
+                <h3 id="word">Aerial</h3>
                 <button class="btn btn--icon pronounce">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -195,51 +194,28 @@
                         <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" /></svg>
                 </button>
                 <p>
-                    <span>/ 'ɜriəl /</span>
+                    <span id="phonetics">/ 'ɜriəl /</span>
                 </p>
             </div>
         </section>
     </div>
     <div class="word__definitions">
-        <div class="word__definition">
+        <!-- <div class="word__definition">
             <span class="list-index">1.</span>
             <span class="part-of-speech">Noun</span>
             <p class="definition">A pass to a receiver downfield from the
                 passer.</p>
-            <div class="sub-section synonyms">
-                <div class="title">
-                    <h4>Synonyms</h4>
-                    <button class="btn btn--icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-chevron-down">
-                            <polyline points="6 9 12 15 18 9" /></svg>
-                    </button>
-                </div>
-                <span class="word-list">Forward pass</span>
+            <div class="sub-section">
+                <h4 class="title">Synonyms</h4>
+                <span class="definition-list">Forward pass</span>
+                <h4 class="title">Example</h4>
+                <span class="definition-list">That's such an aerial</span>
             </div>
-        </div>
-        <div class="word__definition">
-            <span class="list-index">2.</span>
-            <span class="part-of-speech">Noun</span>
-            <p class="definition">An electrical device that sends or receives
-                radio or television signals</p>
-            <div class="sub-section synonyms">
-                <div class="title">
-                    <h4>Synonyms</h4>
-                    <button class="btn btn--icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-chevron-up">
-                            <polyline points="18 15 12 9 6 15" /></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
+        </div> -->
     </div>
     <!-- End word definition -->
+    <script src="./src/js/init.js"></script>
+    <script src="./src/js/events.js"></script>
 </body>
 
 </html>
