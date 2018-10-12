@@ -15,7 +15,6 @@ class Worddie {
   static pronounceWord(word) {
     const synth = window.speechSynthesis;
     const voices = synth.getVoices();
-    console.log(voices);
     const speech = new SpeechSynthesisUtterance(word);
 
     if (voices.length > 0) {
