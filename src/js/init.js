@@ -1,12 +1,6 @@
 class Worddie {
-  constructor(word) {
-    this.word = word;
-  }
-
-  getDefinition() {
-    const api = `https://googledictionaryapi.eu-gb.mybluemix.net/?define=${
-      this.word
-    }&lang=en`;
+  static getDefinition(word) {
+    const api = `https://googledictionaryapi.eu-gb.mybluemix.net/?define=${word}&lang=en`;
 
     fetch(api)
       .then(response => response.json())
@@ -18,10 +12,11 @@ class Worddie {
       });
   }
 
-  pronounceWord() {
+  static pronounceWord(word) {
     const synth = window.speechSynthesis;
     const voices = synth.getVoices();
-    const speech = new SpeechSynthesisUtterance(this.word);
+    console.log(voices);
+    const speech = new SpeechSynthesisUtterance(word);
 
     if (voices.length > 0) {
       const defaultVoice = voices.filter(
@@ -35,7 +30,7 @@ class Worddie {
     return voices;
   }
 
-  deleteWord() {}
+  static deleteWord(word) {}
 
   static renderDefinitions(worddieObject) {
     let definitionIndex = 0;
