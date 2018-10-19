@@ -17,6 +17,15 @@ body {
   color: #0f2328;
 }
 
+.home {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.home.hide {
+  opacity: 0;
+}
+
 .banner {
   align-items: center;
   background: linear-gradient(180deg, #204b57 -2.01%, #718c94 100%);
@@ -54,13 +63,13 @@ body {
   border-top-right-radius: 5px;
   bottom: 36px;
   color: #ffffff;
-  height: 51px;
+  height: 50px;
   opacity: 0;
   padding: 11.2px;
   position: absolute;
   right: 24px;
   transition: opacity 400ms ease-in;
-  width: 49px;
+  width: 55px;
 }
 
 .search__btn-active {
@@ -201,4 +210,17 @@ body {
 
 .definition-list:not(:last-child)::after {
   content: ", ";
+}
+
+.definitions {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  transition: all 0.5s ease-in-out;
+  width: 100%;
+}
+
+.definitions.open {
+  position: absolute;
+  right: 0;
 }

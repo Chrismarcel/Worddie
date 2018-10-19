@@ -28,12 +28,19 @@ document.querySelector(".pronounce").addEventListener("click", function() {
 
 document.querySelector(".search__btn").addEventListener("click", function(evt) {
   evt.preventDefault();
+  document.querySelector(".definitions").classList.add("open");
+  document.querySelector(".home").classList.add("hide");
   const definitions = Array.from(
     document.querySelectorAll(".word__definition")
   );
   definitions.map(definition => definition.remove());
   const word = document.querySelector(".search__input").value;
   Worddie.getDefinition(word);
+});
+
+document.querySelector("button.back").addEventListener("click", function() {
+  document.querySelector(".definitions").classList.remove("open");
+  document.querySelector(".home").classList.remove("hide");
 });
 
 const deleteWords = document.querySelectorAll(".delete");
