@@ -15,23 +15,18 @@
     <main class="home">
         <section class="banner search">
             <h2 class="search__header">Worddie</h2>
-            <button class="search__btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-search">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-            </button>
-            <span class="search__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-search">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-            </span>
-            <input type="text" class="search__input" placeholder="Search for a word">
+            <form action="">
+                <input type="text" class="search__input" placeholder="Search for a word">
+                <button class="search__btn"></button>
+                <span class="search__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-search">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                </span>
+            </form>
         </section>
         <section class="recent">
             <h4 class="recent__title">Recent Searches</h4>

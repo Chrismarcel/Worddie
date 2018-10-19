@@ -1,6 +1,9 @@
 document.querySelector(".search__input").addEventListener("keyup", function() {
   // Check if word contains any character other than a string
   // Or if input field is empty
+  const searchIcon = document.querySelector(".feather").cloneNode(true);
+  document.querySelector("button .feather-search").remove();
+  document.querySelector(".search__btn").append(searchIcon);
   document.querySelector(".search__btn").classList.add("search__btn-active");
   document.querySelector(".search__icon").classList.add("search__icon-active");
   if (this.value.match(/[^A-z]+/) || this.value.trim().length === 0) {
@@ -23,7 +26,12 @@ document.querySelector(".pronounce").addEventListener("click", function() {
   Worddie.pronounceWord(word);
 });
 
-document.querySelector(".search__btn").addEventListener("click", function() {
+document.querySelector(".search__btn").addEventListener("click", function(evt) {
+  evt.preventDefault();
+  const definitions = Array.from(
+    document.querySelectorAll(".word__definition")
+  );
+  definitions.map(definition => definition.remove());
   const word = document.querySelector(".search__input").value;
   Worddie.getDefinition(word);
 });

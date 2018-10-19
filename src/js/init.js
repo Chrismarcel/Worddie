@@ -63,7 +63,6 @@ class Worddie {
 
   static appendContent(selector, content) {
     document.querySelector(selector).textContent = content;
-    return;
   }
 
   static createDefinitionNode(definitionObj) {
@@ -105,7 +104,7 @@ class Worddie {
     definitionNode.appendChild(partOfSpeechEl);
     definitionNode.appendChild(definitionEl);
     definitionNode.appendChild(subSectionEl);
-    document.querySelector(".word__definitions").appendChild(definitionNode);
+    document.querySelector(".word__definitions").append(definitionNode);
   }
 
   static renderLists(title, wordsList) {
