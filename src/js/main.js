@@ -27,8 +27,13 @@ document.querySelector(".pronounce").addEventListener("click", function() {
 
 document.querySelector(".search__btn").addEventListener("click", function(evt) {
   evt.preventDefault();
-  document.querySelector(".definitions").classList.add("open");
+  const definitionsElem = document.querySelector(".definitions");
+  definitionsElem.classList.add("open");
+  definitionsElem.style.position = "fixed";
   document.querySelector(".home").classList.add("hide");
+  setTimeout(() => {
+    document.querySelector(".definitions").style.position = "absolute";
+  }, 200);
   const definitions = Array.from(
     document.querySelectorAll(".word__definition")
   );
@@ -38,6 +43,7 @@ document.querySelector(".search__btn").addEventListener("click", function(evt) {
 });
 
 document.querySelector("button.back").addEventListener("click", function() {
+  document.querySelector(".definitions").style.position = "fixed";
   document.querySelector(".definitions").classList.remove("open");
   document.querySelector(".home").classList.remove("hide");
 });
