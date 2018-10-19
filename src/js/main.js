@@ -1,6 +1,5 @@
 document.querySelector(".search__input").addEventListener("keyup", function() {
-  // Check if word contains any character other than a string
-  // Or if input field is empty
+  // Validate input
   const searchIcon = document.querySelector(".feather").cloneNode(true);
   document.querySelector("button .feather-search").remove();
   document.querySelector(".search__btn").append(searchIcon);
