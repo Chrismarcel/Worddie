@@ -47,10 +47,10 @@ body {
 }
 
 .search__icon {
-  bottom: 46px;
+  bottom: 47px;
   color: #204b57;
   position: absolute;
-  right: 36px;
+  right: 39px;
 }
 
 .search__icon-active {
@@ -156,6 +156,7 @@ body {
 
 .word__definition {
   padding: 25px;
+  border-bottom: 1px solid #eaeeef;
 }
 
 .word__search__details > h3 {

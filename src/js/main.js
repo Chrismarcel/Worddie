@@ -27,19 +27,8 @@ document.querySelector(".pronounce").addEventListener("click", function() {
 
 document.querySelector(".search__btn").addEventListener("click", function(evt) {
   evt.preventDefault();
-  const definitionsElem = document.querySelector(".definitions");
-  definitionsElem.classList.add("open");
-  definitionsElem.style.position = "fixed";
-  document.querySelector(".home").classList.add("hide");
-  setTimeout(() => {
-    document.querySelector(".definitions").style.position = "absolute";
-  }, 200);
-  const definitions = Array.from(
-    document.querySelectorAll(".word__definition")
-  );
-  definitions.map(definition => definition.remove());
   const word = document.querySelector(".search__input").value;
-  Worddie.getDefinition(word);
+  displayDefinition(word);
 });
 
 document.querySelector("button.back").addEventListener("click", function() {
@@ -57,4 +46,34 @@ Array.from(deleteWords).map(word => {
       parentEl.remove();
     }, 500);
   });
+});
+
+const recentWords = document.querySelectorAll(".recent__item");
+Array.from(recentWords).map(recentWord => {
+  recentWord.addEventListener("click", function() {
+    console.log(this);
+    const word = this.textContent;
+    displayDefinition(word);
+  });
+});
+
+const displayDefinition = word => {
+  const definitionsElem = document.querySelector(".definitions");
+  definitionsElem.classList.add("open");
+  definitionsElem.style.position = "fixed";
+  document.querySelector(".home").classList.add("hide");
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+    document.querySelector(".definitions").style.position = "absolute";
+  }, 200);
+  const definitions = Array.from(
+    document.querySelectorAll(".word__definition")
+  );
+  definitions.map(definition => definition.remove());
+  Worddie.getDefinition(word);
+};
+
+// Register service worker
+navigator.serviceWorker.register("./sw.js").then(reg => {
+  console.log("Service Worker installed successfully");
 });

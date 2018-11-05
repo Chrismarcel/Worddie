@@ -1,5 +1,6 @@
 class Worddie {
   static getDefinition(word) {
+    word = word.trim();
     const api = `https://googledictionaryapi.eu-gb.mybluemix.net/?define=${word}&lang=en`;
 
     fetch(api)
