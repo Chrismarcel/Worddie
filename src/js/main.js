@@ -48,10 +48,9 @@ Array.from(deleteWords).map(word => {
   });
 });
 
-const recentWords = document.querySelectorAll(".recent__item");
+const recentWords = document.querySelectorAll(".recent__word>p");
 Array.from(recentWords).map(recentWord => {
   recentWord.addEventListener("click", function() {
-    console.log(this);
     const word = this.textContent;
     displayDefinition(word);
   });
