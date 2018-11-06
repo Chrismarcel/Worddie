@@ -26,7 +26,6 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.open("Worddies").then(cache => {
-      console.log(event.request);
       return cache.match(event.request).then(cacheResponse => {
         return (
           cacheResponse ||

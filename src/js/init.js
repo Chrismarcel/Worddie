@@ -3,14 +3,27 @@ class Worddie {
     word = word.trim();
     const api = `https://googledictionaryapi.eu-gb.mybluemix.net/?define=${word}&lang=en`;
 
-    fetch(api)
-      .then(response => response.json())
-      .then(definition => {
-        Worddie.renderDefinitions(definition);
-      })
-      .catch(error => {
-        console.log("Sorry, could not connect to Server", error);
-      });
+    const idbObject = new IDBOperations(word);
+
+    Promise.resolve(idbObject.fetchDefinitionsFromIDB("single")).then(
+      definitions => {
+        if (definitions) {
+          console.log(definitions, "Fetched from IDB");
+          Worddie.renderDefinitions(definitions);
+        } else {
+          console.log(definitions, "Fetched from Network");
+          fetch(api)
+            .then(response => response.json())
+            .then(definitions => {
+              idbObject.saveDefinitionstoIDB(definitions);
+              Worddie.renderDefinitions(definitions);
+            })
+            .catch(error => {
+              console.error("Sorry, could not connect to Server", error);
+            });
+        }
+      }
+    );
   }
 
   static pronounceWord(word) {

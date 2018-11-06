@@ -73,6 +73,7 @@ const displayDefinition = word => {
 };
 
 // Register service worker
+
 navigator.serviceWorker.register("./sw.js").then(reg => {
   console.log("Service Worker installed successfully");
 });
